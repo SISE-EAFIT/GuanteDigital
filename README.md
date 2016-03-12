@@ -8,6 +8,7 @@
      Hoja de vida realizada en latex insertando una imagen
 
 + Makefile
+
      Ejemplo de un Makefile realizado en c
 
 + 3 comandos en vim
