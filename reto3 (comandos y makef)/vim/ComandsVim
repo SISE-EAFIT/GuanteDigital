@@ -1,0 +1,13 @@
+noremap cl 1000dd
+nnoremap <F9> :call Spacetab()<enter>
+noremap l :call Lineerror()<enter>
+
+function! Lineerror()
+    set colorcolumn=40
+endfunction
+
+function! Spacetab()
+    set encoding=utf-8
+    set list listchars=tab:→\ ,trail:·
+    exe '%s/\s\+$//'
+endfunction

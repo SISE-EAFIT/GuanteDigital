@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{graphicx}
+\graphicspath{ {./} }
+
+\begin{document}
+
+\centerline{\includegraphics{Foto}}
+
+\section{Datos Personales}
+\begin{itemize}
+\item \textbf{NOMBRE:} \hspace{\fill} Mariana Narvaez \hspace*{1cm}
+\item \textbf{DOCUMENTO DE IDENTIDAD:} \hspace*{\fill} 1037650413 \hspace*{1cm}
+\item \textbf{LUGAR Y FECHA DE NACIMIENTO:} \hspace*{\fill} Env (Ant), Junio 11 \hspace*{0cm}
+\hspace*{10cm}de 1996
+\item \textbf{DIRECCION:} \hspace*{\fill} CRR 59 CC No. 37-09 Bello (Ant) \hspace*{1cm}
+\item \textbf{TELEFONO:} \hspace*{\fill} 558 43 37/321 716 69 50 \hspace*{1cm}
+\item \textbf{E-MAIL:} \hspace*{\fill} mn.narvaez@hotmail.com \hspace*{0cm}
+\end{itemize}
+
+\section{Perfil}
+
+Soy una persona cumplidora de las labores y requerimientos que se le exigen, capaz de liderar procesos y solucionar problemas rápidamente. Poseo valores como laresponsabilidad, cordialidad, respeto y el trabajo en equipo.
+Tengo capacidades para la atención y satisfacción del usuario. 
+
+
+\end{document}

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /home/mariana/Documentos
+vim Commands.vim

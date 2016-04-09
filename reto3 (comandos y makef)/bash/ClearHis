@@ -1,0 +1,5 @@
+#!/bin/bash
+history
+clear
+cat /dev/null > ~/.bash_history
+echo "El historial ha  sido borrado."
