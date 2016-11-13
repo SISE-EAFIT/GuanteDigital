@@ -23,3 +23,13 @@
 ###Reto4
 
 Emular un teclado mediante botones conectados a una placa de arduino
+
+
+###Bobot
+
+Desarrollo en arduino para controlar al carro robot Bobot por medio de botone o flex; internamenente funcionan con sockets que envían las señales del arduino yun a la Raspberry Pi por medio de serial.
+
+
+###Teclado
+
+
