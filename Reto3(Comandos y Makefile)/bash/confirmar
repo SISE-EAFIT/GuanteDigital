@@ -1,0 +1,22 @@
+#!/bin/bash
+
+while true; do
+
+echo
+
+read -p "Esta seguro que desea continuar con el proceso: " yn
+
+case $yn in
+
+yes ) break;;
+
+no ) exit;;
+
+* ) echo " yes o no";
+
+esac
+done
+
+echo "ya no hay vuelta atras 3:)"
+
+
