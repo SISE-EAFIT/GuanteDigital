@@ -1,4 +1,4 @@
-//#include <Keyboard.h>
+#include <Keyboard.h>
 
 //Flex
 const int indice  = A0;
@@ -73,23 +73,23 @@ void loop() {
   //Logica del guante
   if(punto == 1){
     Serial.println(46);
-    //Keyboard.write(46);
+    Keyboard.write(46);
   }
   if(coma == 1){
     Serial.println(44);
-    //Keyboard.write(44);
+    Keyboard.write(44);
   }
   if(espacio == 1){
     Serial.println(8);
-    //Keyboard.write(8);
+    Keyboard.write(8);
   }
   if(borrar == 1){
     Serial.println(32);
-    //Keyboard.write(32);
+    Keyboard.write(32);
   }
   if(enter == 1){
     Serial.println(13);
-    //Keyboard.write(13);
+    Keyboard.write(13);
   }
 
 
@@ -100,7 +100,7 @@ void loop() {
   Serial.println("grupo1 Activado "+ String(grupo1));
   Serial.println("grupo2 Activado "+ String(grupo2));
 
-  if(grupo2 == 0 && grupo1 == 1 && horizontalDes !=0 || verticalDes !=0){
+  if(grupo2 == 0 && grupo1 == 1 && horizontalDes !=0 || verticalDes!=0){
     if(horizontalDes == 5){
       horizontalCont++;
     }else if(horizontalDes == -4){
@@ -111,30 +111,30 @@ void loop() {
 
     if(horizontalCont == 1){
       letra  = 97; //a
-      if(verticalDes == 5){
+      if(verticalDes == 5 ){
         letra = 65; //A
        }
        if(verticalDes == -4){
         letra = 160; //á
        }
        //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == 2){
       letra  = 98; //b
-      if(verticalDes == 5){
+      if(verticalDes == 5 ){
         letra = 66; //B
        }
        //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
-    if(horizontalCont == 3){
+    if(horizontalCont == 3 ){
       letra  = 99; //c
       if(verticalDes == 5){
         letra = 67; //C
        }
        //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == 4){
       letra  = 100; //d

@@ -13,13 +13,16 @@ import java.util.Enumeration;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+
+import java.awt.Robot;
 import javax.swing.BorderFactory;
 
 import java.awt.event.ActionEvent;
+import static java.awt.image.ImageObserver.ERROR;
 import javax.swing.event.ChangeListener;
 
 
-public class TecladoDigital extends JFrame implements  SerialPortEventListener{
+public class ensayis extends JFrame implements  Runnable, SerialPortEventListener{
 
     //Componenetes para la conexión con Arduino
     SerialPort serialPort;
@@ -31,31 +34,26 @@ public class TecladoDigital extends JFrame implements  SerialPortEventListener{
     Thread Hilo;
     int datos;
     
+    Robot simulando;
+    
     //Componentes de la interfaz
     JLabel labelIndice, labelCorazon,
            labelGrupo1, labelGrupo2,
            labelCaracter, labelGrupo3,
            labelDesactivar;
-    JSlider barIndice, barCorazon;
     JCheckBox boxDesactivar;
     JButton btnAyuda;
     JPanel panel1 = new JPanel();
     
-    int min = -6;
-    int max = 7;
-    int valor = 1;  
-    
-    public TecladoDigital(){
+    public ensayis(){
         initComponents();
         ArduinoConnection();
     }
     
     private void initComponents(){
         this.setTitle("  Teclado Dígital");
-        this.setSize(200, 380);
+        this.setSize(200, 280);
         this.setResizable(false);
-        this.setLayout(null);
-        
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(3);
         this.getContentPane().setBackground(Color.WHITE);
@@ -67,20 +65,6 @@ public class TecladoDigital extends JFrame implements  SerialPortEventListener{
         labelCorazon = new JLabel("Corazón");
         labelCorazon.setFont(new Font("Monospaced", Font.PLAIN, 14));
         labelCorazon.setBounds(130, 20, 70, 40);
-        
-        barIndice = new JSlider(JSlider.VERTICAL,
-                                      min, max, valor);
-        barIndice.setMinorTickSpacing(1);
-        barIndice.setPaintTicks(true);
-        barIndice.setPaintLabels(true);
-        barIndice.setFont(new Font("Monospaced", Font.PLAIN, 12));
-                
-        barCorazon = new JSlider(JSlider.VERTICAL,
-                                      min, max, valor);
-        barCorazon.setMinorTickSpacing(1);
-        barCorazon.setPaintTicks(true);
-        barCorazon.setPaintLabels(true);
-        barCorazon.setFont(new Font("Monospaced", Font.PLAIN, 12));
         
         labelGrupo1 = new JLabel(String.valueOf(datos));
         labelGrupo1.setHorizontalAlignment(JLabel.CENTER);
@@ -112,10 +96,9 @@ public class TecladoDigital extends JFrame implements  SerialPortEventListener{
         btnAyuda.setFont(new Font("Monospaced", Font.PLAIN, 14));
         btnAyuda.setBounds(160, 305, 25, 25);
         
+
         this.add(labelIndice);
         this.add(labelCorazon);
-        this.add(barIndice, BorderLayout.CENTER);
-        this.add(barCorazon, BorderLayout.CENTER);
         this.add(labelGrupo1);
         this.add(labelGrupo2);
         this.add(labelGrupo3);
@@ -157,10 +140,31 @@ public class TecladoDigital extends JFrame implements  SerialPortEventListener{
         }
     }
 
-    private int RecibirDatos() throws IOException {
-        int Output = 0;
-        Output = Input.read();
-        return Output;
+    private String RecibirDatos() throws IOException {
+        //avalilble estima la cantidad de bytes que esta mandando el arduino
+        int available = Input.available();
+        
+        //en necesario una variable byte para decirle al metodo read 
+        //cuanto va a leer
+        byte lectura[] = new byte[available];
+        
+        //leer los datos enviados por el arduino
+        Input.read(lectura, 0, available);
+        
+        String numero = new String(lectura);
+        int letra = 0;
+        try {
+            simulando = new Robot();
+            //Simulando teclado
+            if(numero.equals("44")){
+                letra = KeyEvent.VK_COMMA;
+            }
+            simulando.keyPress(letra);
+        }catch (AWTException e) {
+            e.printStackTrace();
+        }
+        
+        return numero;
     }
     
         
@@ -168,21 +172,25 @@ public class TecladoDigital extends JFrame implements  SerialPortEventListener{
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TecladoDigital().setVisible(true);
+                new ensayis().setVisible(true);
             }
         });
     }
     
-     @Override
     public synchronized void serialEvent(SerialPortEvent oEvent){
         if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE){
             try {
                 //Llamando al método que recive los valores del arduino
-                datos = RecibirDatos();
-                System.out.println((char)datos);
+                String datos = RecibirDatos();
+                System.out.println(datos);
             } catch (Exception e) {
                 System.err.println(e.toString());
             }
         }
+    }
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

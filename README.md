@@ -32,4 +32,6 @@ Desarrollo en arduino para controlar al carro robot Bobot por medio de botone o 
 
 ###Teclado
 
-
+Simulación de un teclado desde un guante construido con flex y pulsadores, que permitirán realizar la representación de teclas y caracteres.
+Se diseño una interfaz donde el usuario podra interactuar con el funcionamiento de teclado dígital.
+Todo el desarrollo del teclado se hizo desde Java para la interfaz y lectura de datos envíados desde el arduino, esta codificación sirve para cualquier arduino.
