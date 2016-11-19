@@ -12,9 +12,9 @@ import java.util.Enumeration;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import javax.swing.BorderFactory;
 
 import java.awt.event.ActionEvent;
@@ -31,9 +31,7 @@ public class ensayis extends JFrame implements  Runnable, SerialPortEventListene
     private final String PORT_NAME = "/dev/cu.usbmodem1411";
     private static final int TIME_OUT = 2000;
     private static final int DATA_RATE = 9600;
-    Thread Hilo;
-    int datos;
-    
+    String tecla;
     Robot simulando;
     
     //Componentes de la interfaz
@@ -46,8 +44,8 @@ public class ensayis extends JFrame implements  Runnable, SerialPortEventListene
     JPanel panel1 = new JPanel();
     
     public ensayis(){
-        initComponents();
         ArduinoConnection();
+        initComponents();
     }
     
     private void initComponents(){
@@ -66,19 +64,19 @@ public class ensayis extends JFrame implements  Runnable, SerialPortEventListene
         labelCorazon.setFont(new Font("Monospaced", Font.PLAIN, 14));
         labelCorazon.setBounds(130, 20, 70, 40);
         
-        labelGrupo1 = new JLabel(String.valueOf(datos));
+        labelGrupo1 = new JLabel(tecla);
         labelGrupo1.setHorizontalAlignment(JLabel.CENTER);
         labelGrupo1.setFont(new Font("Monospaced", Font.PLAIN, 14));
         labelGrupo1.setBounds(20, 100, 25, 25);
         labelGrupo1.setBorder(BorderFactory.createLineBorder(Color.gray));
         
-        labelGrupo2 = new JLabel(String.valueOf(datos));
+        labelGrupo2 = new JLabel(tecla);
         labelGrupo2.setHorizontalAlignment(JLabel.CENTER);
         labelGrupo2.setFont(new Font("Monospaced", Font.PLAIN, 14));
         labelGrupo2.setBounds(140, 100, 25, 25);
         labelGrupo2.setBorder(BorderFactory.createLineBorder(Color.gray));
         
-        labelGrupo3 = new JLabel(String.valueOf(datos));
+        labelGrupo3 = new JLabel(tecla);
         labelGrupo3.setHorizontalAlignment(JLabel.CENTER);
         labelGrupo3.setFont(new Font("Monospaced", Font.PLAIN, 14));
         labelGrupo3.setBounds(20, 215, 25, 25);
@@ -143,30 +141,37 @@ public class ensayis extends JFrame implements  Runnable, SerialPortEventListene
     private String RecibirDatos() throws IOException {
         //avalilble estima la cantidad de bytes que esta mandando el arduino
         int available = Input.available();
-        
         //en necesario una variable byte para decirle al metodo read 
         //cuanto va a leer
         byte lectura[] = new byte[available];
-        
         //leer los datos enviados por el arduino
         Input.read(lectura, 0, available);
+        String datos = new String(lectura);
         
-        String numero = new String(lectura);
-        int letra = 0;
-        try {
-            simulando = new Robot();
-            //Simulando teclado
-            if(numero.equals("44")){
-                letra = KeyEvent.VK_COMMA;
-            }
-            simulando.keyPress(letra);
-        }catch (AWTException e) {
-            e.printStackTrace();
-        }
-        
-        return numero;
+        return datos;
     }
     
+   /* public String Mapeando(String letra){
+        tecla = this.tecla;
+        switch(tecla) {
+            case "46" :
+                tecla = "."; 
+                break;
+            case "44" :
+                tecla = ",";
+            case "8" :
+                tecla = "space"; 
+                break;
+            case "32" :
+                tecla = "delete";
+            case "13" :
+                tecla = "enter";
+         default :
+            System.out.println("Tecla Inválida");
+        }
+        return tecla;
+    }
+    */
         
     public static void main(String args[]) {
         /* Create and display the form */
@@ -180,9 +185,143 @@ public class ensayis extends JFrame implements  Runnable, SerialPortEventListene
     public synchronized void serialEvent(SerialPortEvent oEvent){
         if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE){
             try {
-                //Llamando al método que recive los valores del arduino
-                String datos = RecibirDatos();
-                System.out.println(datos);
+                //Simulando teclado
+                simulando = new Robot();
+                
+                //Llamando al método que recibe los valores del arduino
+                String letra = RecibirDatos();
+                
+                /*CARACTERES*/
+                if(letra.contains("46")){
+                    System.out.println(".");
+                    simulando.keyRelease(KeyEvent.VK_PERIOD);
+                }
+                if(letra.contains("44")){
+                    System.out.println(",");
+                    simulando.keyRelease(KeyEvent.VK_COMMA);
+                }
+                if(letra.contains("8")){
+                    System.out.println("space");
+                    simulando.keyRelease(KeyEvent.VK_SPACE);
+                }
+                if(letra.contains("32")){
+                    System.out.println("delete");
+                    simulando.keyRelease(KeyEvent.VK_BACK_SPACE);
+                }
+                if(letra.contains("13")){
+                    System.out.println("enter");
+                    simulando.keyRelease(KeyEvent.VK_ENTER);
+                }
+                
+                /*TECLAS FLEX CORAZÓN*/
+                if(letra.contains("21")){
+                    System.out.println("z");
+                    simulando.keyRelease(KeyEvent.VK_Z);
+                }
+                if(letra.contains("20")){
+                    System.out.println("y");
+                    simulando.keyRelease(KeyEvent.VK_Y);
+                }
+                if(letra.contains("19")){
+                    System.out.println("x");
+                    simulando.keyRelease(KeyEvent.VK_X);
+                }
+                if(letra.contains("18")){
+                    System.out.println("w");
+                    simulando.keyRelease(KeyEvent.VK_W);
+                }
+                if(letra.contains("17")){
+                    System.out.println("v");
+                    simulando.keyRelease(KeyEvent.VK_V);
+                }
+                if(letra.contains("16")){
+                    System.out.println("u");
+                    simulando.keyRelease(KeyEvent.VK_U);
+                }
+                if(letra.contains("15")){
+                    System.out.println("t");
+                    simulando.keyRelease(KeyEvent.VK_T);
+                }
+                if(letra.contains("14")){
+                    System.out.println("s");
+                    simulando.keyRelease(KeyEvent.VK_S);
+                }
+                if(letra.contains("13")){
+                    System.out.println("r");
+                    simulando.keyRelease(KeyEvent.VK_R);
+                }
+                if(letra.contains("12")){
+                    System.out.println("q");
+                    simulando.keyRelease(KeyEvent.VK_Q);
+                }
+                if(letra.contains("11")){
+                    System.out.println("p");
+                    simulando.keyRelease(KeyEvent.VK_P);
+                }
+                if(letra.contains("10")){
+                    System.out.println("o");
+                    simulando.keyRelease(KeyEvent.VK_O);
+                }
+                if(letra.contains("9")){
+                    System.out.println("n");
+                    simulando.keyRelease(KeyEvent.VK_N);
+                }
+                
+                /*TECLAS FLEX INDICE*/
+                if(letra.contains("-6")){
+                    System.out.println("m");
+                    simulando.keyRelease(KeyEvent.VK_M);
+                }
+                if(letra.contains("-5")){
+                    System.out.println("l");
+                    simulando.keyRelease(KeyEvent.VK_L);
+                }
+                if(letra.contains("-4")){
+                    System.out.println("k");
+                    simulando.keyRelease(KeyEvent.VK_K);
+                }
+                if(letra.contains("-3")){
+                    System.out.println("j");
+                    simulando.keyRelease(KeyEvent.VK_J);
+                }
+                if(letra.contains("-2")){
+                    System.out.println("i");
+                    simulando.keyRelease(KeyEvent.VK_I);
+                }
+                if(letra.contains("-1")){
+                    System.out.println("h");
+                    simulando.keyRelease(KeyEvent.VK_H);
+                }
+                if(letra.contains("1")){
+                    System.out.println("g");
+                    simulando.keyRelease(KeyEvent.VK_G);
+                }
+                if(letra.contains("2")){
+                    System.out.println("f");
+                    simulando.keyRelease(KeyEvent.VK_F);
+                }
+                if(letra.contains("3")){
+                    System.out.println("e");
+                    simulando.keyRelease(KeyEvent.VK_E);
+                }
+                if(letra.contains("4")){
+                    System.out.println("d");
+                    simulando.keyRelease(KeyEvent.VK_D);
+                }
+                if(letra.contains("5")){
+                    System.out.println("c");
+                    simulando.keyRelease(KeyEvent.VK_C);
+                }
+                if(letra.contains("6")){
+                    System.out.println("b");
+                    simulando.keyRelease(KeyEvent.VK_B);
+                }
+                if(letra.contains("7")){
+                    System.out.println("a");
+                    simulando.keyRelease(KeyEvent.VK_A);
+                }
+                //Mapeando(letra);
+                //System.out.println(letra);
             } catch (Exception e) {
                 System.err.println(e.toString());
             }

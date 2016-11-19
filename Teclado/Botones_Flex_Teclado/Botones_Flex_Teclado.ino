@@ -106,9 +106,7 @@ void loop() {
     }else if(horizontalDes == -4){
       horizontalCont--;
     }
-    //Serial.println("Cont Horizontal "+ String(horizontalCont));
-    //Serial.println("Cont Horizontal "+ String(horizontalCont));
-
+    
     if(horizontalCont == 1){
       letra  = 97; //a
       if(verticalDes == 5 ){
@@ -117,7 +115,6 @@ void loop() {
        if(verticalDes == -4){
         letra = 160; //á
        }
-       //Serial.println(letra);
        Keyboard.write(letra);
     }
     if(horizontalCont == 2){
@@ -125,7 +122,6 @@ void loop() {
       if(verticalDes == 5 ){
         letra = 66; //B
        }
-       //Serial.println(letra);
        Keyboard.write(letra);
     }
     if(horizontalCont == 3 ){
@@ -133,7 +129,6 @@ void loop() {
       if(verticalDes == 5){
         letra = 67; //C
        }
-       //Serial.println(letra);
        Keyboard.write(letra);
     }
     if(horizontalCont == 4){
@@ -141,8 +136,7 @@ void loop() {
       if(verticalDes == 5){
         letra = 68; //D
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == 5){
       letra  = 101; //e
@@ -152,32 +146,28 @@ void loop() {
        if(verticalDes == -4){
         letra = 130; //é
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == 6){
       letra  = 102; //f
       if(verticalDes == 5){
         letra = 70; //F
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == 7){
       letra  = 103; //g
       if(verticalDes == 5){
         letra = 71; //G 
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == -6){
       letra  = 104; //h
       if(verticalDes == 5){
         letra = 72; //H
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == -5){
       letra  = 105; //i
@@ -187,42 +177,36 @@ void loop() {
        if(verticalDes == -4){
         letra = 161; //í
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == -4){
       letra  = 106; //j
       if(verticalDes == 5){
         letra = 74; //J
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == -3){
       letra  = 107; //k
       if(verticalDes == 5){
         letra = 75; //K
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == -2){
       letra  = 108; //l
       if(verticalDes == 5){
         letra = 76; //L
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == -1){
       letra  = 109; //m
       if(verticalDes == 5){
         letra = 77; //M
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
-    Serial.println(letra);
   }
 
   if(horizontalCont < -6 || horizontalCont > 7){
@@ -245,56 +229,49 @@ void loop() {
        if(verticalDes == -4){
         letra = 164; //ñ
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == 2){
       letra  = 111; //o
       if(verticalDes == 5){
         letra = 79; //O
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == 3){
       letra  = 112; //p
       if(verticalDes == 5){
         letra = 80; //p
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == 4){
       letra  = 113; //q
       if(verticalDes == 5){
         letra = 81; //Q
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == 5){
       letra  = 114; //r
       if(verticalDes == 5){
         letra = 82; //R
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == 6){
       letra  = 115; //s
       if(verticalDes == 5){
         letra = 83; //S
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == 7){
       letra  = 116; //t
       if(verticalDes == 5){
         letra = 84; //T
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == -6){
       letra  = 117; //u
@@ -304,50 +281,43 @@ void loop() {
        if(verticalDes == -4){
         letra = 163; //ú
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == -5){
       letra  = 118; //v
       if(verticalDes == 5){
         letra = 86; //V
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == -4){
       letra  = 119; //w
       if(verticalDes == 5){
         letra = 87; //W
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == -3){
       letra  = 120; //x
       if(verticalDes == 5){
         letra = 88; //X
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == -2){
       letra  = 121; //y
       if(verticalDes == 5){
         letra = 89; //Y
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
     if(horizontalCont == -1){
       letra  = 122; //z
       if(verticalDes == 5){
         letra = 90; //Z
        }
-       //Serial.println(letra);
-       //Keyboard.write(letra);
+       Keyboard.write(letra);
     }
-    Serial.println(letra);
   }
    
   delay(400);

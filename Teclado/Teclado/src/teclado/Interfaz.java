@@ -11,6 +11,7 @@ import javax.swing.*;
  *
  * @author Michell Pineda
  */
+
 public class Interfaz extends JFrame implements Runnable, SerialPortEventListener {
 
     Teclado teclado;
