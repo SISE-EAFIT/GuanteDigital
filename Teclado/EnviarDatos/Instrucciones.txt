@@ -1,0 +1,2 @@
+Esta implementación de arduino envía datos a la interfaz desarrollada en Java, la cual envía dichos datos por serial, estos datos son un mapeo en el cual dependiendo de la lectura de los flex o los pulsadores se les asigna una letra, dicha letra es enviada en valor ASCII
+
