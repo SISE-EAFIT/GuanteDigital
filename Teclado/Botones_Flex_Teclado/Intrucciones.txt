@@ -1,3 +1,0 @@
-Esta implementación de java permite simular eventos del teclado, de forma que se hace un mapeo de los flex o los pulsadores asignadoles una letra, dicha letra se simula por la libreria "#include <Keyboard.h>".
-
-Esta implementción no funciona para todos los arduinos, en este caso se estausando el arduino YÚN
