@@ -115,6 +115,20 @@ public class Interfaz extends JFrame implements Runnable, SerialPortEventListene
         jSlider1.setMinimum(-6);
         jSlider1.setOrientation(javax.swing.JSlider.VERTICAL);
         jSlider1.setValue(cont1);
+        jSlider1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jSlider1AncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jSlider1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jSlider1KeyPressed(evt);
+            }
+        });
 
         jSlider2.setBackground(new java.awt.Color(255, 255, 255));
         jSlider2.setMaximum(7);
@@ -213,6 +227,14 @@ public class Interfaz extends JFrame implements Runnable, SerialPortEventListene
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
+    private void jSlider1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jSlider1AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jSlider1AncestorAdded
+
+    private void jSlider1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jSlider1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jSlider1KeyPressed
+
 
     public static void main(String args[]) {
         try {
@@ -262,168 +284,267 @@ public class Interfaz extends JFrame implements Runnable, SerialPortEventListene
                 letra = RecibirDatos();
                 
                 /*CARACTERES*/
-                if(letra.contains("46")){
-                    caracter = ".";
-                    System.out.println(".");
-                    simulando.keyRelease(KeyEvent.VK_PERIOD);
-                }
-                if(letra.contains("44")){
-                    caracter = ",";
-                    System.out.println(",");
-                    simulando.keyRelease(KeyEvent.VK_COMMA);
-                }
                 if(letra.contains("8")){
                     caracter = "{ }";
                     System.out.println("space");
-                    simulando.keyRelease(KeyEvent.VK_SPACE);
-                }
-                if(letra.contains("32")){
-                    caracter = "<-";
-                    System.out.println("delete");
-                    simulando.keyRelease(KeyEvent.VK_BACK_SPACE);
+                    simulando.keyPress(KeyEvent.VK_SPACE);
                 }
                 if(letra.contains("13")){
                     caracter = "<-'";
                     System.out.println("enter");
-                    simulando.keyRelease(KeyEvent.VK_ENTER);
+                    simulando.keyPress(KeyEvent.VK_ENTER);
+                }
+                if(letra.contains("32")){
+                    caracter = "<-";
+                    System.out.println("delete");
+                    simulando.keyPress(KeyEvent.VK_BACK_SPACE);
+                }
+                if(letra.contains("40")){
+                    caracter = "(";
+                    System.out.println("(");
+                    simulando.keyPress(KeyEvent.VK_LEFT_PARENTHESIS);
+                }
+                if(letra.contains("41")){
+                    caracter = ")";
+                    System.out.println(")");
+                    simulando.keyPress(KeyEvent.VK_RIGHT_PARENTHESIS);
+                }
+                if(letra.contains("43")){
+                    caracter = "+";
+                    System.out.println("+");
+                    simulando.keyPress(KeyEvent.VK_PLUS);
+                }                
+                if(letra.contains("44")){
+                    caracter = ",";
+                    System.out.println(",");
+                    simulando.keyPress(KeyEvent.VK_COMMA);
+                }
+                if(letra.contains("45")){
+                    caracter = "-";
+                    System.out.println("-");
+                    simulando.keyPress(KeyEvent.VK_MINUS);
+                }
+                if(letra.contains("46")){
+                    caracter = ".";
+                    System.out.println(".");
+                    simulando.keyPress(KeyEvent.VK_PERIOD);
+                }
+                if(letra.contains("47")){
+                    caracter = "/";
+                    System.out.println("/");
+                    simulando.keyPress(KeyEvent.VK_SLASH);
+                }
+                if(letra.contains("58")){
+                    caracter = ":";
+                    System.out.println(":");
+                    simulando.keyPress(KeyEvent.VK_COMMA);
+                }
+                if(letra.contains("61")){
+                    caracter = "=";
+                    System.out.println("=");
+                    simulando.keyPress(KeyEvent.VK_EQUALS);
+                }
+                if(letra.contains("63")){
+                    caracter = "?";
+                    System.out.println("?");
+                    simulando.keyPress(KeyEvent.VK_QUOTE);
+                }
+                if(letra.contains("64")){
+                    caracter = "@";
+                    System.out.println("@");
+                    simulando.keyPress(KeyEvent.VK_AT);   
+                }
+                /*NUMEROS*/
+                if(letra.contains("48")){
+                    caracter = "0";
+                    System.out.println("0");
+                    simulando.keyPress(KeyEvent.VK_0);
+                }
+                if(letra.contains("49")){
+                    caracter = "1";
+                    System.out.println("1");
+                    simulando.keyPress(KeyEvent.VK_1);
+                }
+                if(letra.contains("50")){
+                    caracter = "2";
+                    System.out.println("2");
+                    simulando.keyPress(KeyEvent.VK_2);
+                }
+                if(letra.contains("51")){
+                    caracter = "3";
+                    System.out.println("3");
+                    simulando.keyPress(KeyEvent.VK_3);
+                }
+                if(letra.contains("52")){
+                    caracter = "4";
+                    System.out.println("4");
+                    simulando.keyPress(KeyEvent.VK_4);
+                }
+                if(letra.contains("53")){
+                    caracter = "5";
+                    System.out.println("5");
+                    simulando.keyPress(KeyEvent.VK_5);
+                }                
+                if(letra.contains("54")){
+                    caracter = "6";
+                    System.out.println("6");
+                    simulando.keyPress(KeyEvent.VK_6);
+                }
+                if(letra.contains("55")){
+                    caracter = "7";
+                    System.out.println("7");
+                    simulando.keyPress(KeyEvent.VK_7);
+                }
+                if(letra.contains("56")){
+                    caracter = "8";
+                    System.out.println("8");
+                    simulando.keyPress(KeyEvent.VK_8);
+                }
+                if(letra.contains("57")){
+                    caracter = "9";
+                    System.out.println("9");
+                    simulando.keyPress(KeyEvent.VK_9);
+                }
+                
+                
+                /*TECLAS FLEX INDICE*/
+                if(letra.contains("97")){
+                    cont1 = 1;
+                    System.out.println("a");
+                    simulando.keyPress(KeyEvent.VK_A);
+                }
+                if(letra.contains("98")){
+                    cont1 = 2;
+                    System.out.println("b");
+                    simulando.keyPress(KeyEvent.VK_L);
+                }
+                if(letra.contains("99")){
+                    cont1 = 3;
+                    System.out.println("c");
+                    simulando.keyPress(KeyEvent.VK_C);
+                }
+                if(letra.contains("100")){
+                    cont1 = 4;
+                    System.out.println("d");
+                    simulando.keyPress(KeyEvent.VK_D);
+                }
+                if(letra.contains("101")){
+                    cont1 = 5;
+                    System.out.println("e");
+                    simulando.keyPress(KeyEvent.VK_E);
+                }
+                if(letra.contains("102")){
+                    cont1 = 6;
+                    System.out.println("f");
+                    simulando.keyPress(KeyEvent.VK_F);
+                }
+                if(letra.contains("103")){
+                    cont1 = 7;
+                    System.out.println("g");
+                    simulando.keyPress(KeyEvent.VK_G);
+                }
+                if(letra.contains("104")){
+                    cont2 = -6;
+                    System.out.println("h");
+                    simulando.keyPress(KeyEvent.VK_H);
+                }
+                if(letra.contains("105")){
+                    cont2 = -5;
+                    System.out.println("i");
+                    simulando.keyPress(KeyEvent.VK_I);
+                }
+                if(letra.contains("106")){
+                    cont2 = -4;
+                    System.out.println("j");
+                    simulando.keyPress(KeyEvent.VK_J);
+                }
+                if(letra.contains("107")){
+                    cont2 = -3;
+                    System.out.println("k");
+                    simulando.keyPress(KeyEvent.VK_K);
+                }
+                if(letra.contains("108")){
+                    cont2 = -2;
+                    System.out.println("l");
+                    simulando.keyPress(KeyEvent.VK_L);
+                }
+                if(letra.contains("109")){
+                    cont2 = -1;
+                    System.out.println("m");
+                    simulando.keyPress(KeyEvent.VK_M);
                 }
                 
                 /*TECLAS FLEX CORAZÓN*/
-                if(letra.contains("-6")){
-                    cont2 = -6;
-                    System.out.println("z");
-                    simulando.keyRelease(KeyEvent.VK_Z);
-                }
-                if(letra.contains("-5")){
-                    cont2 = -5;
-                    System.out.println("y");
-                    simulando.keyRelease(KeyEvent.VK_Y);
-                }
-                if(letra.contains("-4")){
-                    cont2 = -4;
-                    System.out.println("x");
-                    simulando.keyRelease(KeyEvent.VK_X);
-                }
-                if(letra.contains("-3")){
-                    cont2 = -3;
-                    System.out.println("w");
-                    simulando.keyRelease(KeyEvent.VK_W);
-                }
-                if(letra.contains("-2")){
-                    cont2 = -2;
-                    System.out.println("v");
-                    simulando.keyRelease(KeyEvent.VK_V);
-                }
-                if(letra.contains("-1")){
-                    cont2 = -1;
-                    System.out.println("u");
-                    simulando.keyRelease(KeyEvent.VK_U);
-                }
-                if(letra.contains("1")){
-                    cont2 = 1;
-                    System.out.println("t");
-                    simulando.keyRelease(KeyEvent.VK_T);
-                }
-                if(letra.contains("2")){
-                    cont2 = 2;
-                    System.out.println("s");
-                    simulando.keyRelease(KeyEvent.VK_S);
-                }
-                if(letra.contains("3")){
-                    cont2 = 3;
-                    System.out.println("r");
-                    simulando.keyRelease(KeyEvent.VK_R);
-                }
-                if(letra.contains("4")){
-                    cont2 = 4;
-                    System.out.println("q");
-                    simulando.keyRelease(KeyEvent.VK_Q);
-                }
-                if(letra.contains("5")){
-                    cont2 = 5;
-                    System.out.println("p");
-                    simulando.keyRelease(KeyEvent.VK_P);
-                }
-                if(letra.contains("6")){
-                    cont2 = 6;
-                    System.out.println("o");
-                    simulando.keyRelease(KeyEvent.VK_O);
-                }
-                if(letra.contains("7")){
-                    cont2 = 7;
-                    System.out.println("n");
-                    simulando.keyRelease(KeyEvent.VK_N);
-                }
-                
-                /*TECLAS FLEX INDICE*/
-                if(letra.contains("-6")){
-                    cont1 = -6;
-                    System.out.println("m");
-                    simulando.keyRelease(KeyEvent.VK_M);
-                }
-                if(letra.contains("-5")){
-                    cont1 = -5;
-                    System.out.println("l");
-                    simulando.keyRelease(KeyEvent.VK_L);
-                }
-                if(letra.contains("-4")){
-                    cont1 = -4;
-                    System.out.println("k");
-                    simulando.keyRelease(KeyEvent.VK_K);
-                }
-                if(letra.contains("-3")){
-                    cont1 = -3;
-                    System.out.println("j");
-                    simulando.keyRelease(KeyEvent.VK_J);
-                }
-                if(letra.contains("-2")){
-                    cont1 = -2;
-                    System.out.println("i");
-                    simulando.keyRelease(KeyEvent.VK_I);
-                }
-                if(letra.contains("-1")){
-                    cont1 = -1;
-                    System.out.println("h");
-                    simulando.keyRelease(KeyEvent.VK_H);
-                }
-                if(letra.contains("1")){
+                if(letra.contains("110")){
                     cont1 = 1;
-                    System.out.println("g");
-                    simulando.keyRelease(KeyEvent.VK_G);
+                    System.out.println("n");
+                    simulando.keyPress(KeyEvent.VK_N);
                 }
-                if(letra.contains("2")){
+                if(letra.contains("111")){
                     cont1 = 2;
-                    System.out.println("f");
-                    simulando.keyRelease(KeyEvent.VK_F);
+                    System.out.println("o");
+                    simulando.keyPress(KeyEvent.VK_O);
                 }
-                if(letra.contains("3")){
+                if(letra.contains("112")){
                     cont1 = 3;
-                    System.out.println("e");
-                    simulando.keyRelease(KeyEvent.VK_E);
+                    System.out.println("p");
+                    simulando.keyPress(KeyEvent.VK_P);
                 }
-                if(letra.contains("4")){
+                if(letra.contains("113")){
                     cont1 = 4;
-                    System.out.println("d");
-                    simulando.keyRelease(KeyEvent.VK_D);
+                    System.out.println("q");
+                    simulando.keyPress(KeyEvent.VK_Q);
                 }
-                if(letra.contains("5")){
+                if(letra.contains("114")){
                     cont1 = 5;
-                    System.out.println("c");
-                    simulando.keyRelease(KeyEvent.VK_C);
+                    System.out.println("r");
+                    simulando.keyPress(KeyEvent.VK_R);
                 }
-                if(letra.contains("6")){
+                if(letra.contains("115")){
                     cont1 = 6;
-                    System.out.println("b");
-                    simulando.keyRelease(KeyEvent.VK_B);
+                    System.out.println("s");
+                    simulando.keyPress(KeyEvent.VK_S);
                 }
-                if(letra.contains("7")){
+                if(letra.contains("116")){
                     cont1 = 7;
-                    System.out.println("a");
-                    simulando.keyRelease(KeyEvent.VK_A);
+                    System.out.println("t");
+                    simulando.keyPress(KeyEvent.VK_T);
+                }
+                if(letra.contains("117")){
+                    cont2 = -6;
+                    System.out.println("u");
+                    simulando.keyPress(KeyEvent.VK_U);
+                }
+                if(letra.contains("118")){
+                    cont2 = -5;
+                    System.out.println("v");
+                    simulando.keyPress(KeyEvent.VK_V);
+                }
+                if(letra.contains("119")){
+                    cont2 = -4;
+                    System.out.println("w");
+                    simulando.keyPress(KeyEvent.VK_W);
+                }
+                if(letra.contains("120")){
+                    cont2 = -3;
+                    System.out.println("x");
+                    simulando.keyPress(KeyEvent.VK_X);
+                }
+                if(letra.contains("121")){
+                    cont2 = -2;
+                    System.out.println("y");
+                    simulando.keyPress(KeyEvent.VK_Y);
+                }
+                if(letra.contains("122")){
+                    cont2 = -1;
+                    System.out.println("z");
+                    simulando.keyPress(KeyEvent.VK_Z);
                 }
             } catch (Exception e) {
                 System.err.println(e.toString());
             }
+            jSlider1.setValue(cont1);
+            jSlider2.setValue(cont2);
         }
     }
 
