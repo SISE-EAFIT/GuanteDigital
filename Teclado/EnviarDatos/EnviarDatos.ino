@@ -3,7 +3,7 @@ const int indice  = A0;
 const int corazon = A1;
 
 //Botones
-const int select = 12;
+const int seleccionar = 12;
 const int caracterPunto   = 11;
 const int caracterEspacio = 6;
 const int caracterDelete  = 8;
@@ -11,7 +11,7 @@ const int caracterEnter   = 7;
 
 //Joystick
 const int joyPin1  = A3; //arriba abajo
-const int joyPin2  = A4; //izzlxjvquierda derecha
+const int joyPin2  = A4; //izquierda derecha
  
 int horizontalCont = 0;
 int verticalCont = 0;
@@ -22,7 +22,7 @@ void setup() {
   pinMode(indice, INPUT);
   pinMode(corazon, INPUT);
 
-  pinMode(select, INPUT);
+  pinMode(seleccionar, INPUT);
   pinMode(caracterPunto, INPUT);
   pinMode(caracterEspacio, INPUT);
   pinMode(caracterDelete, INPUT);
@@ -48,14 +48,12 @@ void loop() {
   grupo1 = constrain(grupo1, 0, 1);
   grupo2 = constrain(grupo2, 0, 1);
 
-
   //Valores leidos de los botones
+  int select = digitalRead(seleccionar);
   int punto = digitalRead(caracterPunto);
-  int coma  =  digitalRead(caracterComa);
   int espacio = digitalRead(caracterEspacio);
   int borrar = digitalRead(caracterDelete);
   int enter = digitalRead(caracterEnter);
-  
   
   //Valores mapeados del JoyStick
   int valorJoy1 = analogRead(joyPin1);
@@ -82,7 +80,6 @@ void loop() {
     Serial.println(13);
   }
 
-
   if(verticalCont < -10 || verticalCont > 10){
     verticalCont = 0;
   }
@@ -94,65 +91,65 @@ void loop() {
     }
     //NUMEROS
     if(verticalCont == -1){
-      Serial.println(48) //0
+      Serial.println(48); //0
     }
     if(verticalCont == -2){
-      Serial.println(49) //1
+      Serial.println(49); //1
     }
     if(verticalCont == -3){
-      Serial.println(50) //2
+      Serial.println(50); //2
     }
     if(verticalCont == -4){
-      Serial.println(51) //3
+      Serial.println(51); //3
     }
     if(verticalCont == -5){
-      Serial.println(52) //4
+      Serial.println(52); //4
     }
     if(verticalCont == -6){
-      Serial.println(53) //5
+      Serial.println(53); //5
     }
     if(verticalCont == -7){
-      Serial.println(54) //6
+      Serial.println(54); //6
     }
     if(verticalCont == -8){
-      Serial.println(55) //7
+      Serial.println(55); //7
     }
     if(verticalCont == -9){
-      Serial.println(56) //8
+      Serial.println(56); //8
     }
     if(verticalCont == -10){
-      Serial.println(57) //9 
+      Serial.println(57); //9 
     }
     //CARACTERES
     if(verticalCont == 1){
-      Serial.println(44) //,
+      Serial.println(44); //,
     }
     if(verticalCont == 2){
-      Serial.println(40) //(
+      Serial.println(40); //(
     }
     if(verticalCont == 3){
-      Serial.println(41) //)
+      Serial.println(41); //)
     }
     if(verticalCont == 4){
-      Serial.println(58) //:
+      Serial.println(58); //:
     }
     if(verticalCont == 5){
-      Serial.println(47) //"/"
+      Serial.println(47); //"/"
     }
     if(verticalCont == 6){
-      Serial.println(63) //?
+      Serial.println(63); //?
     }
     if(verticalCont == 7){
-      Serial.println(43) //+
+      Serial.println(43); //+
     }
     if(verticalCont == 8){
-      Serial.println(45) //-
+      Serial.println(45); //-
     }
     if(verticalCont == 9){
-      Serial.println(64) //@
+      Serial.println(64); //@
     }
     if(verticalCont == 10){
-      Serial.println(61) //= 
+      Serial.println(61); //= 
     }    
   }
 
