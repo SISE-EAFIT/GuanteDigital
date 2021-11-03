@@ -2,7 +2,7 @@
 
 ## Retos
 
-### Reto3
+### Reto 3
 
 + Hoja de vida:
 	Hoja de vida realizada en latex insertando una imagen
@@ -16,15 +16,15 @@
 + Tres comandos en bash:
 	Son guardados en /usr/local/bin con el fin de ejecutarlos directamente, solo con su nombre desde cualquier directorio
 
-Desarrollado por Mariana Narvaez
+Desarrollado por: Mariana Narvaez
 
-### Reto4
+### Reto 4
 Emular eventos de un teclado mediante pulsadores conectados a una placa de arduino.
 Esta implementación no sirve para todos los arduinos.
 
 Desarrollado por Mariana Narvaez
 
-### Reto5
+### Reto 5
 Emular eventos de un teclado mediante pulsadores conectados a una placa de arduino,
 que envían el valor en ASCII de la tecla a emular a un programa en Python que se 
 encarga de hacer el evento del teclado por medio de la librería Xlib.
